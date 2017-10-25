@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatSelectModule} from '@angular/material';
+
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
@@ -29,7 +32,14 @@ const appRoutes: Routes = [
     ListsComponent
   ],
   imports: [
-    BrowserModule, HttpModule, FormsModule,
+    BrowserModule,
+    HttpModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatSelectModule,
     RouterModule.forRoot(appRoutes, {useHash: true} )
   ],
   providers: [TodoListService],

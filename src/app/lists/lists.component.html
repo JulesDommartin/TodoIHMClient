@@ -1,9 +1,22 @@
-<p>There are {{getLists().length}} lists</p>
 <section>
-  <form (ngSubmit)="createList(newListName.value); newListName.value=''">
-    <label>Create a new list:</label>
-    <input type="text" #newListName/>
-  </form>
+  <div class="home-left-buttons home-header">
+    <button mat-raised-button>Ajouter une tâche</button>
+    <mat-form-field>
+      <mat-select placeholder="Select" [(ngModel)]="selectedCategory">
+        <mat-option *ngFor="let category of categories" [value]="category.value">{{ category.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="home-center-searchbar home-header">
+  </div>
+  <div class="home-right-icons home-header">
+    <a mat-icon-button (click)="onAlertClick()">
+      <i class="material-icons">notifications</i>
+    </a>
+    <a mat-icon-button (click)="onSettingsClick()">
+      <i class="material-icons">settings</i>
+    </a>
+  </div>
 </section>
 
 <!--
@@ -12,4 +25,7 @@
 -->
 <section class="lists">
   <app-todo-list *ngFor="let list of getLists()" [list]="list" [clock]="list.clock"></app-todo-list>
+  <div *ngIf="getLists().length < 1" class="center">
+    Vous n'avez pour l'instant aucune tâche enregistrée.
+  </div>
 </section>

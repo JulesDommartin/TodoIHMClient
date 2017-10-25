@@ -1,10 +1,7 @@
 header {
   display: flex;
   flex-flow: row;
-  background: lightgreen;
   margin: 0;
-  padding: 0.5em;
-  border-bottom: solid black 3px;
 }
 
 header > h1 {
@@ -31,4 +28,10 @@ section.connection {
 
 section.connection > label:hover {
   background: yellow;
+}
+
+.header h2 {
+  margin: auto;
+  text-align: center;
+  padding: 20px;
 }
