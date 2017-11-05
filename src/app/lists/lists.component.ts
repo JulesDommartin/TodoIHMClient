@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {TodoListWithItems, TodoListJSON, TodoListService, ItemJSON} from "../todo-list.service";
 import {List} from "immutable";
-import {MatButtonModule} from '@angular/material';
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import {NewItemModalComponent} from '../new-item-modal/new-item-modal.component';
 
 
 @Component({
@@ -15,9 +16,25 @@ export class ListsComponent implements OnInit {
   categories: any;
 
 
-  constructor(private todoListService: TodoListService) {
+  constructor(private todoListService: TodoListService, private dialog: MatDialog) {
     this.initCategories();
-    console.log(this.categories);
+  }
+
+  openDialog(): void {
+    let dialogRef = this.dialog.open(NewItemModalComponent, <MatDialogConfig>{
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.initList();
+      let data = {
+        titre: result.titre,
+        lieu: result.lieu,
+        commentaire: result.commentaire
+      };
+      let list = this.todoListService.getLists()[0];
+      this.todoListService.SERVER_CREATE_ITEM(list.id, result.titre, false);
+    });
   }
 
   ngOnInit() {
@@ -25,6 +42,12 @@ export class ListsComponent implements OnInit {
 
   getLists(): TodoListWithItems[] {
     return this.todoListService.getLists();
+  }
+
+  initList() {
+    if (this.todoListService.getLists().length == 0) {
+      this.createList("Main List");
+    }
   }
 
   initCategories() {

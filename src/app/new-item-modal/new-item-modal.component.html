@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Nouvelle tâche</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <label>Titre</label>
+    <input matInput tabindex="1" [(ngModel)]="data.titre">
+  </mat-form-field>
+  <mat-form-field>
+    <label>Lieu</label>
+    <input matInput tabindex="2"  [(ngModel)]="data.lieu">
+  </mat-form-field>
+  <mat-form-field>
+    <label>Commentaire</label>
+    <textarea matInput tabindex="3" [(ngModel)]="data.commentaire"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data" tabindex="2">1</button>
+  <button mat-button (click)="onNoClick()" tabindex="-1">2</button>
+</div>

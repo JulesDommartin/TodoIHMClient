@@ -3,11 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatSelectModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatSelectModule, MatDialogModule, MatInputModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
+import { NewItemModalComponent } from './new-item-modal/new-item-modal.component';
 
 import { TodoListService } from "./todo-list.service";
 import {HttpModule} from '@angular/http';
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     AppComponent,
     TodoListComponent,
     TodoItemComponent,
-    ListsComponent
+    ListsComponent,
+    NewItemModalComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,20 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatDialogModule,
+    MatInputModule,
     RouterModule.forRoot(appRoutes, {useHash: true} )
+  ],
+  exports: [
+    MatButtonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatInputModule
+  ],
+  entryComponents: [
+    NewItemModalComponent
   ],
   providers: [TodoListService],
   bootstrap: [AppComponent]
