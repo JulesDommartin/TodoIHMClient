@@ -17,7 +17,13 @@ export class TodoListComponent implements OnInit {
   }
 
   createItem(label: string) {
-    this.todoListService.SERVER_CREATE_ITEM(this.list.id, label, false);
+    const id = this.todoListService.SERVER_CREATE_ITEM(this.list.id, label, false, {
+      someData: "someValue",
+      someNumber: 42,
+      someArray: ["riri", "fifi", "loulou"],
+      itemColor: "#FFFFFF"
+      // Add other data here...
+    });
   }
 
   delete() {

@@ -68,7 +68,11 @@ export class ListsComponent implements OnInit {
   }
 
   createList(name: string) {
-    this.todoListService.SERVER_CREATE_NEW_LIST(name);
+    const localListID = this.todoListService.SERVER_CREATE_NEW_LIST(name, {
+      color: "#FF0000",
+      someOtherAttribute: "pourquoi pas un texte ?"
+      // Add other data here...
+    });
   }
 
   onSettingsClick() {

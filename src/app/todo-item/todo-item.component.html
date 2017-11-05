@@ -1,7 +1,7 @@
 <section>
   <input #isChecked type="checkbox" [ngModel]="item.checked" (ngModelChange)="check(isChecked.checked)" />
   <label *ngIf="!isEditingLabel()" (dblclick)="editLabel(true)">
-    {{item.label}}
+    {{item.label}} (data: {{item.data | json}})
   </label>
   <form *ngIf="isEditingLabel()" (submit)="setLabel(newLabel.value)">
     <input #newLabel type="text" [value]="item.label"/>
