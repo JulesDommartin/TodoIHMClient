@@ -11,11 +11,10 @@ import {NewItemModalComponent} from '../new-item-modal/new-item-modal.component'
 export class TodoListComponent implements OnInit {
   @Input() list: TodoListWithItems;
   @Input() clock: number;
-  public currentList: TodoListWithItems;
+  public currentList: any[];
 
   constructor(private todoListService: TodoListService) {
     this.list = this.todoListService.getLists()[0];
-    this.currentList = Object.assign({}, this.list);
     this.today();
   }
 
@@ -44,7 +43,7 @@ export class TodoListComponent implements OnInit {
   }
 
   dateFilter(start: Date, end: Date) {
-    this.currentList.items = this.list.items.filter((item) => {
+    this.currentList = this.list.items.filter((item) => {
       let itemDate = new Date(item.data['date']);
       return itemDate.getFullYear() >= start.getFullYear() && itemDate.getMonth() >= start.getMonth()
           && itemDate.getDate() >= start.getDate() && itemDate.getFullYear() <= end.getFullYear()
