@@ -1,19 +1,25 @@
 <h1 mat-dialog-title>Nouvelle tâche</h1>
 <div mat-dialog-content>
   <mat-form-field>
+    <label>Date</label>
+    <input matInput tabindex="1" [matDatepicker]="picker" [(ngModel)]="data.date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
     <label>Titre</label>
-    <input matInput tabindex="1" [(ngModel)]="data.titre">
+    <input matInput tabindex="2" [(ngModel)]="data.titre">
   </mat-form-field>
   <mat-form-field>
     <label>Lieu</label>
-    <input matInput tabindex="2"  [(ngModel)]="data.lieu">
+    <input matInput tabindex="3"  [(ngModel)]="data.lieu">
   </mat-form-field>
   <mat-form-field>
     <label>Commentaire</label>
-    <textarea matInput tabindex="3" [(ngModel)]="data.commentaire"></textarea>
+    <textarea matInput tabindex="4" [(ngModel)]="data.commentaire"></textarea>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="data" tabindex="2">1</button>
-  <button mat-button (click)="onNoClick()" tabindex="-1">2</button>
+  <button mat-button [mat-dialog-close]="data" tabindex="2">Ok</button>
+  <button mat-button (click)="onNoClick()" tabindex="-1">No Thanks</button>
 </div>

@@ -1,9 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatSelectModule, MatDialogModule, MatInputModule} from '@angular/material';
+import {
+  MatButtonModule, 
+  MatCheckboxModule, 
+  MatFormFieldModule, 
+  MatSelectModule, 
+  MatDialogModule, 
+  MatInputModule, 
+  MatDatepickerModule,
+  MatNativeDateModule
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
@@ -44,6 +53,8 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatDialogModule,
     MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     RouterModule.forRoot(appRoutes, {useHash: true} )
   ],
   exports: [
@@ -52,7 +63,10 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatSelectModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
     NewItemModalComponent

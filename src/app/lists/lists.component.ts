@@ -33,7 +33,7 @@ export class ListsComponent implements OnInit {
         commentaire: result.commentaire
       };
       let list = this.todoListService.getLists()[0];
-      this.todoListService.SERVER_CREATE_ITEM(list.id, result.titre, false);
+      this.todoListService.SERVER_CREATE_ITEM(list.id, result.titre, false, data);
     });
   }
 
