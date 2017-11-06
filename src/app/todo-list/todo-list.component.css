@@ -26,3 +26,38 @@ h3 {
 .items {
   margin: 10px 30px;
 }
+
+.left-side-list {
+  width: 25%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: right;
+  margin-top: 20px;
+  font-size: 0.8em;
+}
+
+mat-card.main-list {
+  width: 60%;
+  display: inline-block;
+  min-height: 150px;
+}
+
+.left-tab {
+  border: 1px solid black;
+  border-radius: 5px 0 0 5px;
+  background-color: #ccc;
+  color: black;
+  padding: 5px;
+  margin-bottom: 5px;
+  width: 100%;
+  text-align: left;
+}
+
+.left-tab a {
+  width: 100%;
+  cursor: pointer;
+}
+
+.tab-title {
+  margin-right: 20px;
+}

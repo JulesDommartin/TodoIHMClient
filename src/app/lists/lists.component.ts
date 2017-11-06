@@ -27,14 +27,21 @@ export class ListsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.initList();
+      console.log(result);
       if (result) {
         let data = {
           titre: result.titre,
           lieu: result.lieu,
-          commentaire: result.commentaire
+          commentaire: result.commentaire,
+          date: result.date,
+          categorie: result.category
         };
-        let list = this.todoListService.getLists()[0];
-        this.todoListService.SERVER_CREATE_ITEM(list.id, result.titre, false, data);
+        if (data.titre && data.date && data.categorie) {
+          let list = this.todoListService.getLists()[0];
+          this.todoListService.SERVER_CREATE_ITEM(list.id, result.titre, false, data);
+        } else {
+          console.error("Missing information");
+        }
       }
     });
   }

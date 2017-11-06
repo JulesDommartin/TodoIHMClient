@@ -51,6 +51,8 @@ export class TodoListService {
       value: "Call"
     }
   ];
+  private editing = false;
+  private deleting = false;
 
   constructor(private http: Http) {
     this.sio = io({
@@ -268,6 +270,22 @@ export class TodoListService {
 
 
   // _______________________________________________________________________________________________________________________________________
+  isEditing(): boolean {
+    return this.editing;
+  }
+
+  isDeleting(): boolean {
+    return this.deleting;
+  }
+
+  setEditing(value: boolean): void {
+    this.editing = value;
+  }
+
+  setDeleting(value: boolean): void {
+    this.deleting = value;
+  }
+
   getCategories(): any[] {
     return this.categories;
   }

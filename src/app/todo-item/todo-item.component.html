@@ -1,9 +1,21 @@
 <section>
-  <input *ngIf="editing" #isChecked type="checkbox" [ngModel]="item.checked" (ngModelChange)="check(isChecked.checked)" />
-  <label *ngIf="!isEditingLabel()">
-    {{item.label}}
-  </label>
-  <form *ngIf="isEditingLabel()" (submit)="setLabel(newLabel.value)">
+  <div class="item-label">
+    <input *ngIf="isEditing()" #isChecked type="checkbox" [ngModel]="item.checked" (ngModelChange)="check(isChecked.checked)" />
+    <label>
+      {{item.label}}
+    </label>
+  </div>
+<!--   <form *ngIf="isEditing()" (submit)="setLabel(newLabel.value)">
     <input #newLabel type="text" [value]="item.label"/>
-  </form>
+  </form> -->
+  <div *ngIf="isEditing()" class="item-buttons">
+  	<a mat-icon-button (click)="editItem()">
+      <i class="material-icons">create</i>
+  	</a>
+  </div>
+  <div *ngIf="isDeleting()" class="item-buttons">
+    <a mat-icon-button (click)="deleteItem()">
+      <i class="material-icons">delete</i>
+    </a>
+  </div>
 </section>

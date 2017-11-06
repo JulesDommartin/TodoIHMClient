@@ -1,0 +1,32 @@
+#container {
+
+}
+
+.categorie {
+  width: 40%;
+  float: left;
+}
+
+.date {
+  width: 40%;
+  float: right;
+}
+
+.titre {
+  width: 100%;
+  float: left;
+}
+
+.lieu {
+  width: 100%;
+  float: left;
+}
+
+.commentaire {
+  width: 100%;
+  float: left;
+}
+
+h1 {
+  text-align: center;
+}

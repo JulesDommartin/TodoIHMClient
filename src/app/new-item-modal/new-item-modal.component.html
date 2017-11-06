@@ -1,25 +1,31 @@
 <h1 mat-dialog-title>Nouvelle tâche</h1>
-<div mat-dialog-content>
-  <mat-form-field>
-    <label>Date</label>
+<p *ngIf="errorMessage">{{ errorMessage }}</p>
+<div mat-dialog-content id="container">
+  <mat-form-field class="categorie">
+    <mat-select placeholder="Catégorie *" [(ngModel)]="data.category">
+      <mat-option *ngFor="let category of categories" [value]="category.value">{{ category.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="date">
+    <label>Date *</label>
     <input matInput tabindex="1" [matDatepicker]="picker" [(ngModel)]="data.date">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-  <mat-form-field>
-    <label>Titre</label>
+  <mat-form-field class="titre">
+    <label>Titre *</label>
     <input matInput tabindex="2" [(ngModel)]="data.titre">
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="lieu">
     <label>Lieu</label>
     <input matInput tabindex="3"  [(ngModel)]="data.lieu">
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="commentaire">
     <label>Commentaire</label>
     <textarea matInput tabindex="4" [(ngModel)]="data.commentaire"></textarea>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="data" tabindex="2">Ok</button>
-  <button mat-button (click)="onNoClick()" tabindex="-1">No Thanks</button>
+  <button mat-button (click)="onValidateClick()" tabindex="2">Valider</button>
+  <button mat-button (click)="onNoClick()" tabindex="-1">Annuler</button>
 </div>

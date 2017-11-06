@@ -5,3 +5,11 @@ section.toBeUpdated {
 form {
   display: inline;
 }
+
+.item-label, .item-buttons {
+	display: inline-block;
+}
+
+.item-buttons a i {
+	font-size: 0.9em;
+}

@@ -1,47 +1,68 @@
 import {ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ListID, ItemJSON, TodoListService} from "../todo-list.service";
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import {NewItemModalComponent} from '../new-item-modal/new-item-modal.component';
 
 @Component({
   selector: 'app-todo-item',
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class TodoItemComponent implements OnInit, OnChanges {
   @Input() item: ItemJSON;
   @Input() listId: ListID;
   @Input() clock: number;
-  private editingLabel = false;
 
-  constructor(private todoListService: TodoListService) { }
+  constructor(private todoListService: TodoListService, private dialog: MatDialog) { }
 
   ngOnInit() {
   }
   ngOnChanges(changes: SimpleChanges) {
   }
 
-  setLabel(label: string) {
-    if (label === "") {
-      this.delete();
-    } else {
-      this.todoListService.SERVER_UPDATE_ITEM_LABEL(this.listId, this.item.id, label);
-    }
-    this.editLabel(false);
+  isEditing(): boolean {
+    return this.todoListService.isEditing();
   }
 
-  isEditingLabel(): boolean {
-    return this.editingLabel;
+  isDeleting(): boolean {
+    return this.todoListService.isDeleting();
   }
 
-  editLabel(edit: boolean) {
-    this.editingLabel = edit;
+  editItem() {
+    let dialogRef = this.dialog.open(NewItemModalComponent, <MatDialogConfig>{
+      data: {
+        titre: this.item.data['titre'],
+        lieu: this.item.data['lieu'],
+        commentaire: this.item.data['commentaire'],
+        date: this.item.data['date'],
+        category: this.item.data['categorie']
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        let data = {
+          titre: result.titre,
+          lieu: result.lieu,
+          commentaire: result.commentaire,
+          date: result.date,
+          categorie: result.category
+        };
+        if (data.titre && data.date && data.categorie) {
+          let list = this.todoListService.getLists()[0];
+          this.todoListService.SERVER_UPDATE_ITEM_DATA(list.id, this.item.id, data);
+        } else {
+          console.error("Missing information");
+        }
+      }
+    });
   }
 
   check(checked: boolean) {
     this.todoListService.SERVER_UPDATE_ITEM_CHECK(this.listId, this.item.id, checked);
   }
 
-  delete() {
+  deleteItem() {
     this.todoListService.SERVER_DELETE_ITEM(this.listId, this.item.id);
   }
 }

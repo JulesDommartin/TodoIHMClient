@@ -1,23 +1,42 @@
-<mat-card class="root">
-  <h3 style="text-align: center;">
-    Tâches
-  </h3>
-  <div class="main-list-options">
-    <a mat-icon-button (click)="onEditClick()">
-      <i class="material-icons">create</i>
-    </a>
-    <a mat-icon-button (click)="onDeleteClick()">
-      <i class="material-icons">delete</i>
-    </a>
-    <a mat-icon-button (click)="onAlertClick()">
-      <i class="material-icons">notifications</i>
-    </a>
+<div class="root">
+  <div class="left-side-list">
+    <div class="left-tab">
+      <a (click)="today()" class="tab-title">Aujourd'hui</a>
+    </div>
+    <div class="left-tab">
+      <a (click)="tomorrow()" class="tab-title">Demain</a>
+    </div>
+    <div class="left-tab">
+      <a (click)="inTwoDays()" class="tab-title">Dans 2 jours</a>
+    </div>
+    <div class="left-tab">
+      <a (click)="nextWeek()" class="tab-title">La semaine prochaine</a>
+    </div>
   </div>
-  <section class="items">
-    <app-todo-item *ngFor="let item of list.items"
-                   [clock]="item.clock"
-                   [item]="item"
-                   [listId]="list.id">
-    </app-todo-item>
-  </section>
-</mat-card>
+  <mat-card class="main-list">
+    <h3 style="text-align: center; text-decoration: underline">
+      Tâches
+    </h3>
+    <div class="main-list-options">
+      <a mat-icon-button (click)="onEditClick()">
+        <i class="material-icons">create</i>
+      </a>
+      <a mat-icon-button (click)="onDeleteClick()">
+        <i class="material-icons">delete</i>
+      </a>
+      <a mat-icon-button (click)="onAlertClick()">
+        <i class="material-icons">notifications</i>
+      </a>
+    </div>
+    <section class="items">
+      <app-todo-item *ngFor="let item of currentList.items"
+                     [clock]="item.clock"
+                     [item]="item"
+                     [listId]="list.id">
+      </app-todo-item>
+      <div *ngIf="list.items.length < 1" class="center">
+        Vous n'avez pour l'instant aucune tâche enregistrée.
+      </div>
+    </section>
+  </mat-card>
+</div>

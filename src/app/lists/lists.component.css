@@ -4,10 +4,9 @@ section.lists {
   flex-wrap: wrap;
 /*  border: 1px solid black;
 */  padding: 0 2px 0 0;
-  width: 75%;
-  float: right;
-  margin: 20px 125px 0 0;
-}
+  width: 100%;
+/*  margin: 20px 125px 0 0;
+*/}
 
 .lists div {
   margin: auto;
@@ -25,11 +24,15 @@ app-todo-list {
 }
 
 .home-left-buttons {
-  width: 20%;
+  width: 30%;
+}
+
+.home-left-button {
+  width: 164px;
 }
 
 .home-center-searchbar {
-  width: 50%;
+  width: 40%;
 }
 
 .home-right-icons {
@@ -37,8 +40,18 @@ app-todo-list {
   text-align: right;
 }
 
+.mat-focused .mat-form-field-placeholder {
+    color: #000 !important;
+}
+
 @media screen and (max-width: 780px) {
   section.lists {
     margin: 20px auto 0 auto;
+  }
+}
+
+@media screen and (max-width: 612px) {
+  .home-left-buttons {
+    width: 50%;
   }
 }

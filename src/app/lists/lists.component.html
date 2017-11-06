@@ -1,8 +1,8 @@
 <section>
   <div class="home-left-buttons home-header">
-    <button mat-raised-button (click)="openDialog()">Ajouter une tâche <i class="material-icons" style="font-size: 0.9em;">add</i></button>
-    <mat-form-field>
-      <mat-select placeholder="Select" [(ngModel)]="selectedCategory">
+    <button mat-raised-button class="home-left-button" (click)="openDialog()">Ajouter une tâche <i class="material-icons" style="font-size: 0.9em;">add</i></button>
+    <mat-form-field class="home-left-button">
+      <mat-select placeholder="Categorie" [(ngModel)]="selectedCategory">
         <mat-option *ngFor="let category of categories" [value]="category.value">{{ category.name }}</mat-option>
       </mat-select>
     </mat-form-field>
