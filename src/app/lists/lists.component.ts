@@ -53,20 +53,7 @@ export class ListsComponent implements OnInit {
   }
 
   initCategories() {
-    this.categories = [
-      {
-        name: "Rendez-vous",
-        value: "RDV"
-      },
-      {
-        name: "Évènement",
-        value: "Event"
-      },
-      {
-        name: "Appel",
-        value: "Call"
-      }
-    ];
+    this.categories = this.todoListService.getCategories();
   }
 
   createList(name: string) {
