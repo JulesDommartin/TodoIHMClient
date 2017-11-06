@@ -41,4 +41,17 @@ export class TodoListComponent implements OnInit {
       Object.assign({}, this.list.data, {color})
     );
   }
+
+  onAlertClick() {
+    console.log("Alert");
+  }
+
+  onEditClick() {
+    console.log("Edit");
+  }
+
+  onDeleteClick() {
+    console.log("Delete")
+  }
+
 }

@@ -1,10 +1,13 @@
-<section class="root">
+<mat-card class="root">
   <h3 style="text-align: center;">
     Tâches
   </h3>
   <div class="main-list-options">
     <a mat-icon-button (click)="onEditClick()">
       <i class="material-icons">create</i>
+    </a>
+    <a mat-icon-button (click)="onDeleteClick()">
+      <i class="material-icons">delete</i>
     </a>
     <a mat-icon-button (click)="onAlertClick()">
       <i class="material-icons">notifications</i>
@@ -17,4 +20,4 @@
                    [listId]="list.id">
     </app-todo-item>
   </section>
-</section>
+</mat-card>
