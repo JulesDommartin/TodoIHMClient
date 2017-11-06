@@ -13,3 +13,12 @@
 h3 {
   margin-top: 0;
 }
+
+.main-list-options {
+	text-align: center;
+	font-size: 0.8em;
+}
+
+.root h3 {
+	margin-bottom: 5px;
+}

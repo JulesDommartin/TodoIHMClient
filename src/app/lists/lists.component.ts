@@ -27,13 +27,15 @@ export class ListsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.initList();
-      let data = {
-        titre: result.titre,
-        lieu: result.lieu,
-        commentaire: result.commentaire
-      };
-      let list = this.todoListService.getLists()[0];
-      this.todoListService.SERVER_CREATE_ITEM(list.id, result.titre, false, data);
+      if (result) {
+        let data = {
+          titre: result.titre,
+          lieu: result.lieu,
+          commentaire: result.commentaire
+        };
+        let list = this.todoListService.getLists()[0];
+        this.todoListService.SERVER_CREATE_ITEM(list.id, result.titre, false, data);
+      }
     });
   }
 
