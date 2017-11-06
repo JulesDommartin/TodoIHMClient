@@ -37,6 +37,20 @@ export class TodoListService {
   private genId = generatorPrefix( Date.now() + "::" );
   private connected = new BehaviorSubject<boolean>(false);
   private messagesToSendAfterReconnection: MESSAGE_FOR_SERVER[] = [];
+  private categories = [
+    {
+      name: "Rendez-vous",
+      value: "RDV"
+    },
+    {
+      name: "Évènement",
+      value: "Event"
+    },
+    {
+      name: "Appel",
+      value: "Call"
+    }
+  ];
 
   constructor(private http: Http) {
     this.sio = io({
@@ -254,6 +268,10 @@ export class TodoListService {
 
 
   // _______________________________________________________________________________________________________________________________________
+  getCategories(): any[] {
+    return this.categories;
+  }
+
   getConnected(): Observable<boolean> {
     return this.connected.asObservable();
   }
