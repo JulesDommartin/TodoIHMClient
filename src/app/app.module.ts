@@ -11,7 +11,8 @@ import {
   MatDialogModule, 
   MatInputModule, 
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatCardModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -55,6 +56,7 @@ const appRoutes: Routes = [
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatCardModule,
     RouterModule.forRoot(appRoutes, {useHash: true} )
   ],
   exports: [
@@ -66,7 +68,8 @@ const appRoutes: Routes = [
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule
   ],
   entryComponents: [
     NewItemModalComponent
